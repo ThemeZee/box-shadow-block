@@ -4,4 +4,16 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-themezee-box-shadow-block {}
+.wp-block-themezee-box-shadow-block {
+	&.has-background {
+		padding: 8px 16px;
+
+		> *:first-child {
+			margin-top: 0;
+		}
+	
+		> *:last-child {
+			margin-bottom: 0;
+		}
+	}
+}

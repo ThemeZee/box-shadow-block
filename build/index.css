@@ -6,5 +6,14 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
+.wp-block-themezee-box-shadow-block.has-background {
+  padding: 8px 16px;
+}
+.wp-block-themezee-box-shadow-block.has-background > *:first-child {
+  margin-top: 0;
+}
+.wp-block-themezee-box-shadow-block.has-background > *:last-child {
+  margin-bottom: 0;
+}
 
 /*# sourceMappingURL=index.css.map*/
