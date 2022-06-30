@@ -21,7 +21,27 @@ import {
  * @return {WPElement} Element to render.
  */
 export default function save( { attributes } ) {
-	const blockProps = useBlockProps.save();
+	const {
+		horizontalOffset,
+		verticalOffset,
+		blur,
+		spread,
+	} = attributes;
+
+	// Convert numbers into a string with pixel values (e.g. 5px 5px 10px 0px).
+	const boxShadowPixel = [
+		horizontalOffset,
+		verticalOffset,
+		blur,
+		spread,
+	].map(x => x + "px").join(' ');
+
+	const blockProps = useBlockProps.save( {
+		style: {
+			boxShadow: boxShadowPixel + " #000000",
+		},
+	} );
+
 	const innerBlocksProps = useInnerBlocksProps.save( blockProps );
 
 	return <div { ...innerBlocksProps } />;
