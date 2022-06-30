@@ -1,9 +1,19 @@
 /**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+
+/**
  * WordPress components that create the necessary UI elements for the block
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-components/
  */
-import { TextControl } from '@wordpress/components';
+import {
+	ToolbarDropdownMenu,
+	ToggleControl,
+	PanelBody,
+	TextControl,
+} from '@wordpress/components';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -11,7 +21,11 @@ import { TextControl } from '@wordpress/components';
  *
  * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
  */
-import { useBlockProps } from '@wordpress/block-editor';
+ import {
+	InspectorControls,
+	useBlockProps,
+	useInnerBlocksProps,
+} from '@wordpress/block-editor';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -27,12 +41,17 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 export default function Edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
+	const innerBlocksProps = useInnerBlocksProps( { ...blockProps } );
+
 	return (
-		<div { ...blockProps }>
-			<TextControl
-				value={ attributes.message }
-				onChange={ ( val ) => setAttributes( { message: val } ) }
-			/>
-		</div>
+		<>
+			<InspectorControls>
+				<PanelBody title={ __( 'Box shadow settings' ) }>
+
+				</PanelBody>
+			</InspectorControls>
+
+			<div { ...innerBlocksProps } />
+		</>
 	);
 }
