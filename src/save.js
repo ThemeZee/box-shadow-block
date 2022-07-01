@@ -41,7 +41,7 @@ export default function save( { attributes } ) {
 	// Set custom color if added by user. Otherwise use text color as default.
 	let shadowColor;
 	if ( boxShadowColor != undefined ) {
-		shadowColor = boxShadowColor;
+		shadowColor = `var(--wp--preset--color--${boxShadowColor})`;
 	} else if ( customBoxShadowColor != undefined ) {
 		shadowColor = customBoxShadowColor;
 	} else {

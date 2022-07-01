@@ -257,7 +257,7 @@ function save(_ref) {
   let shadowColor;
 
   if (boxShadowColor != undefined) {
-    shadowColor = boxShadowColor;
+    shadowColor = `var(--wp--preset--color--${boxShadowColor})`;
   } else if (customBoxShadowColor != undefined) {
     shadowColor = customBoxShadowColor;
   } else {
