@@ -24,7 +24,10 @@
       "type": "number",
       "default": 0
     },
-    "shadowColor": {
+    "boxShadowColor": {
+      "type": "string"
+    },
+    "customBoxShadowColor": {
       "type": "string"
     }
   },

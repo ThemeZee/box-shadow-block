@@ -2,27 +2,19 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
+import { compose } from '@wordpress/compose';
 
-/**
- * WordPress components that create the necessary UI elements for the block
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-components/
- */
 import {
 	PanelBody,
 	RangeControl,
 } from '@wordpress/components';
 
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/packages/packages-block-editor/#useBlockProps
- */
  import {
 	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
+	PanelColorSettings,
+	withColors,
 } from '@wordpress/block-editor';
 
 /**
@@ -37,9 +29,11 @@ import {
  *
  * @return {WPElement} Element to render.
  */
- export default function Edit( { 
+function Edit( { 
 	attributes,
+	boxShadowColor,
 	setAttributes,
+	setBoxShadowColor,
 } ) {
 	const {
 		horizontalOffset,
@@ -49,16 +43,19 @@ import {
 	} = attributes;
 
 	// Convert numbers into a string with pixel values (e.g. 5px 5px 10px 0px).
-	const boxShadowPixel = [
+	const shadowPixelValues = [
 		horizontalOffset,
 		verticalOffset,
 		blur,
 		spread,
 	].map(x => x + "px").join(' ');
 
+	// Set custom color if added by user. Otherwise use text color as default.
+	const shadowColor = boxShadowColor.color ? boxShadowColor.color : "currentColor";
+
 	const blockProps = useBlockProps( {
 		style: {
-			boxShadow: boxShadowPixel + " #000000",
+			boxShadow: `${shadowPixelValues} ${shadowColor}`,
 		},
 	} );
 
@@ -102,9 +99,25 @@ import {
 					/>
 
 				</PanelBody>
+
+				<PanelColorSettings 
+					title={__('Box shadow color')}
+					colorSettings={[
+						{
+							value: boxShadowColor.color,
+							onChange: setBoxShadowColor,
+							label: __('Shadow')
+						},
+					]}
+				/>
+
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />
 		</>
 	);
 }
+
+export default compose( [
+	withColors( 'boxShadowColor' ),
+] )( Edit );
