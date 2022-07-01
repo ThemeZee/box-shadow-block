@@ -101,6 +101,7 @@ function Edit( {
 				</PanelBody>
 
 				<PanelColorSettings 
+					__experimentalHasMultipleOrigins
 					title={__('Box shadow color')}
 					colorSettings={[
 						{
