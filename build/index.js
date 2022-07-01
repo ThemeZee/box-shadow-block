@@ -130,7 +130,29 @@ function Edit(_ref) {
       })
     }],
     panelId: clientId
-  }, colorGradientSettings))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps));
+  }, colorGradientSettings)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
+    hasValue: () => {
+      return spread === undefined ? false : true;
+    },
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spread'),
+    onDeselect: () => setAttributes({
+      spread: 0
+    }),
+    resetAllFilter: () => ({
+      spread: 0
+    }),
+    isShownByDefault: true,
+    panelId: clientId
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spread'),
+    value: spread,
+    onChange: value => setAttributes({
+      spread: value
+    }),
+    min: 0,
+    max: 100,
+    required: true
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)([(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.withColors)('boxShadowColor')])(Edit));

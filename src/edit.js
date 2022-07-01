@@ -7,6 +7,7 @@ import { compose } from '@wordpress/compose';
 import {
 	PanelBody,
 	RangeControl,
+	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
  import {
@@ -77,7 +78,7 @@ function Edit( {
 						min={ -100 }
 						max={ 100 }
 					/>
-					
+
 					<RangeControl
 						label={ __( 'Vertical offset' ) }
 						value={ verticalOffset }
@@ -85,7 +86,7 @@ function Edit( {
 						min={ -100 }
 						max={ 100 }
 					/>
-					
+
 					<RangeControl
 						label={ __( 'Blur' ) }
 						value={ blur }
@@ -93,7 +94,7 @@ function Edit( {
 						min={ 0 }
 						max={ 100 }
 					/>
-					
+
 					<RangeControl
 						label={ __( 'Spread' ) }
 						value={ spread }
@@ -137,6 +138,26 @@ function Edit( {
 					panelId={ clientId }
 					{ ...colorGradientSettings }
 				/>
+
+				<ToolsPanelItem
+					hasValue={ () => {
+						return spread === undefined ? false : true;
+					} }
+					label={ __( 'Spread' ) }
+					onDeselect={ () => setAttributes( { spread: 0 } ) }
+					resetAllFilter={ () => ( { spread: 0 } ) }
+					isShownByDefault
+					panelId={ clientId }
+				>
+					<RangeControl
+						label={ __( 'Spread' ) }
+						value={ spread }
+						onChange={ ( value ) => setAttributes( { spread: value } ) }
+						min={ 0 }
+						max={ 100 }
+						required
+					/>
+				</ToolsPanelItem>
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />
