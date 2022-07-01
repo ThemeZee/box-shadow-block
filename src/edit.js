@@ -77,6 +77,7 @@ function Edit( {
 						onChange={ ( value ) => setAttributes( { horizontalOffset: value } ) }
 						min={ -100 }
 						max={ 100 }
+						required
 					/>
 
 					<RangeControl
@@ -85,6 +86,7 @@ function Edit( {
 						onChange={ ( value ) => setAttributes( { verticalOffset: value } ) }
 						min={ -100 }
 						max={ 100 }
+						required
 					/>
 
 					<RangeControl
@@ -93,6 +95,7 @@ function Edit( {
 						onChange={ ( value ) => setAttributes( { blur: value } ) }
 						min={ 0 }
 						max={ 100 }
+						required
 					/>
 
 					<RangeControl
@@ -101,6 +104,7 @@ function Edit( {
 						onChange={ ( value ) => setAttributes( { spread: value } ) }
 						min={ 0 }
 						max={ 100 }
+						required
 					/>
 
 				</PanelBody>

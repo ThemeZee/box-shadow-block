@@ -81,7 +81,8 @@ function Edit(_ref) {
       horizontalOffset: value
     }),
     min: -100,
-    max: 100
+    max: 100,
+    required: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Vertical offset'),
     value: verticalOffset,
@@ -89,7 +90,8 @@ function Edit(_ref) {
       verticalOffset: value
     }),
     min: -100,
-    max: 100
+    max: 100,
+    required: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Blur'),
     value: blur,
@@ -97,7 +99,8 @@ function Edit(_ref) {
       blur: value
     }),
     min: 0,
-    max: 100
+    max: 100,
+    required: true
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spread'),
     value: spread,
@@ -105,7 +108,8 @@ function Edit(_ref) {
       spread: value
     }),
     min: 0,
-    max: 100
+    max: 100,
+    required: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.PanelColorSettings, {
     __experimentalHasMultipleOrigins: true,
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Box shadow color'),
