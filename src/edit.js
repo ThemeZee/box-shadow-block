@@ -14,6 +14,8 @@ import {
 	useBlockProps,
 	useInnerBlocksProps,
 	PanelColorSettings,
+	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
+	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
 	withColors,
 } from '@wordpress/block-editor';
 
@@ -31,6 +33,7 @@ import {
  */
 function Edit( { 
 	attributes,
+	clientId,
 	boxShadowColor,
 	setAttributes,
 	setBoxShadowColor,
@@ -60,6 +63,7 @@ function Edit( {
 	} );
 
 	const innerBlocksProps = useInnerBlocksProps( { ...blockProps } );
+	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
 	return (
 		<>
@@ -112,6 +116,27 @@ function Edit( {
 					]}
 				/>
 
+			</InspectorControls>
+
+			<InspectorControls __experimentalGroup="color">
+				<ColorGradientSettingsDropdown
+					__experimentalHasMultipleOrigins
+					__experimentalIsRenderedInSidebar
+					settings={ [
+						{
+							colorValue: boxShadowColor.color,
+							label: __( 'Box shadow' ),
+							onColorChange: setBoxShadowColor,
+							isShownByDefault: true,
+							resetAllFilter: () => ( {
+								boxShadowColor: undefined,
+								customBoxShadowColor: undefined,
+							} ),
+						},
+					] }
+					panelId={ clientId }
+					{ ...colorGradientSettings }
+				/>
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />
