@@ -111,18 +111,6 @@ function Edit( {
 
 				</PanelBody>
 
-				<PanelColorSettings 
-					__experimentalHasMultipleOrigins
-					title={__('Box shadow color')}
-					colorSettings={[
-						{
-							value: boxShadowColor.color,
-							onChange: setBoxShadowColor,
-							label: __('Shadow')
-						},
-					]}
-				/>
-
 				<ToolsPanel label={ __( 'Box Shadow' ) }>
 
 					<ToolsPanelItem
