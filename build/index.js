@@ -118,7 +118,43 @@ function Edit(_ref) {
       onChange: setBoxShadowColor,
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Shadow')
     }]
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InspectorControls, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanel, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Box Shadow')
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
+    hasValue: () => {
+      return spread === undefined ? false : true;
+    },
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spread'),
+    onDeselect: () => setAttributes({
+      spread: 0
+    }),
+    resetAllFilter: () => ({
+      spread: 0
+    }),
+    isShownByDefault: true
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spread'),
+    value: spread,
+    onChange: value => setAttributes({
+      spread: value
+    }),
+    min: 0,
+    max: 100,
+    required: true
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.__experimentalColorGradientSettingsDropdown, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    __experimentalHasMultipleOrigins: true,
+    __experimentalIsRenderedInSidebar: true,
+    settings: [{
+      colorValue: boxShadowColor.color,
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Color'),
+      onColorChange: setBoxShadowColor,
+      isShownByDefault: true,
+      resetAllFilter: () => ({
+        boxShadowColor: undefined,
+        customBoxShadowColor: undefined
+      })
+    }]
+  }, colorGradientSettings)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InspectorControls, {
     __experimentalGroup: "color"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.__experimentalColorGradientSettingsDropdown, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     __experimentalHasMultipleOrigins: true,

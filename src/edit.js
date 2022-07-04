@@ -7,6 +7,7 @@ import { compose } from '@wordpress/compose';
 import {
 	PanelBody,
 	RangeControl,
+	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
 
@@ -120,6 +121,46 @@ function Edit( {
 						},
 					]}
 				/>
+
+				<ToolsPanel label={ __( 'Box Shadow' ) }>
+					<ToolsPanelItem
+						hasValue={ () => {
+							return spread === undefined ? false : true;
+						} }
+						label={ __( 'Spread' ) }
+						onDeselect={ () => setAttributes( { spread: 0 } ) }
+						resetAllFilter={ () => ( { spread: 0 } ) }
+						isShownByDefault
+					>
+						<RangeControl
+							label={ __( 'Spread' ) }
+							value={ spread }
+							onChange={ ( value ) => setAttributes( { spread: value } ) }
+							min={ 0 }
+							max={ 100 }
+							required
+						/>
+					</ToolsPanelItem>
+
+					<ColorGradientSettingsDropdown
+						__experimentalHasMultipleOrigins
+						__experimentalIsRenderedInSidebar
+						settings={ [
+							{
+								colorValue: boxShadowColor.color,
+								label: __( 'Color' ),
+								onColorChange: setBoxShadowColor,
+								isShownByDefault: true,
+								resetAllFilter: () => ( {
+									boxShadowColor: undefined,
+									customBoxShadowColor: undefined,
+								} ),
+							},
+						] }
+						{ ...colorGradientSettings }
+					/>
+
+				</ToolsPanel>
 
 			</InspectorControls>
 
