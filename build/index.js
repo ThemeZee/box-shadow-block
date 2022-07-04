@@ -122,7 +122,64 @@ function Edit(_ref) {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Box Shadow')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
     hasValue: () => {
-      return spread === undefined ? false : true;
+      return horizontalOffset === 0 ? false : true;
+    },
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Horizontal Offset'),
+    onDeselect: () => setAttributes({
+      horizontalOffset: 0
+    }),
+    resetAllFilter: () => ({
+      horizontalOffset: 0
+    })
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Horizontal Offset'),
+    value: horizontalOffset,
+    onChange: value => setAttributes({
+      horizontalOffset: value
+    }),
+    min: 0,
+    max: 100
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
+    hasValue: () => {
+      return verticalOffset === 0 ? false : true;
+    },
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Vertical Offset'),
+    onDeselect: () => setAttributes({
+      verticalOffset: 0
+    }),
+    resetAllFilter: () => ({
+      verticalOffset: 0
+    })
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Vertical Offset'),
+    value: verticalOffset,
+    onChange: value => setAttributes({
+      verticalOffset: value
+    }),
+    min: 0,
+    max: 100
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
+    hasValue: () => {
+      return blur === 0 ? false : true;
+    },
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Blur'),
+    onDeselect: () => setAttributes({
+      blur: 0
+    }),
+    resetAllFilter: () => ({
+      blur: 0
+    })
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Blur'),
+    value: blur,
+    onChange: value => setAttributes({
+      blur: value
+    }),
+    min: 0,
+    max: 100
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
+    hasValue: () => {
+      return spread === 0 ? false : true;
     },
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spread'),
     onDeselect: () => setAttributes({
@@ -130,8 +187,7 @@ function Edit(_ref) {
     }),
     resetAllFilter: () => ({
       spread: 0
-    }),
-    isShownByDefault: true
+    })
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spread'),
     value: spread,
@@ -139,8 +195,7 @@ function Edit(_ref) {
       spread: value
     }),
     min: 0,
-    max: 100,
-    required: true
+    max: 100
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.__experimentalColorGradientSettingsDropdown, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     __experimentalHasMultipleOrigins: true,
     __experimentalIsRenderedInSidebar: true,
@@ -148,7 +203,7 @@ function Edit(_ref) {
       colorValue: boxShadowColor.color,
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Color'),
       onColorChange: setBoxShadowColor,
-      isShownByDefault: true,
+      isShownByDefault: false,
       resetAllFilter: () => ({
         boxShadowColor: undefined,
         customBoxShadowColor: undefined
@@ -170,29 +225,7 @@ function Edit(_ref) {
       })
     }],
     panelId: clientId
-  }, colorGradientSettings)), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
-    hasValue: () => {
-      return spread === undefined ? false : true;
-    },
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spread'),
-    onDeselect: () => setAttributes({
-      spread: 0
-    }),
-    resetAllFilter: () => ({
-      spread: 0
-    }),
-    isShownByDefault: true,
-    panelId: clientId
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
-    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Spread'),
-    value: spread,
-    onChange: value => setAttributes({
-      spread: value
-    }),
-    min: 0,
-    max: 100,
-    required: true
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps));
+  }, colorGradientSettings))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)([(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.withColors)('boxShadowColor')])(Edit));
@@ -456,7 +489,7 @@ function _extends() {
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"themezee/box-shadow-block","version":"0.1.0","title":"Box Shadow Block","category":"text","icon":"flag","description":"A Gutenberg block to show your pride! This block enables you to type text and style it with the color font Gilbert from Type with Pride.","attributes":{"horizontalOffset":{"type":"number","default":5},"verticalOffset":{"type":"number","default":5},"blur":{"type":"number","default":10},"spread":{"type":"number","default":0},"boxShadowColor":{"type":"string"},"customBoxShadowColor":{"type":"string"}},"supports":{"align":true,"color":{"link":true,"__experimentalDefaultControls":{"background":true,"text":true}},"typography":{"fontSize":true,"lineHeight":true,"__experimentalFontFamily":true,"__experimentalFontStyle":true,"__experimentalFontWeight":true,"__experimentalLetterSpacing":true,"__experimentalTextTransform":true,"__experimentalDefaultControls":{"fontSize":true,"fontAppearance":true}},"__experimentalBorder":{"color":true,"radius":true,"style":true,"width":true},"spacing":{"padding":true,"margin":true}},"textdomain":"box-shadow-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"themezee/box-shadow-block","version":"0.1.0","title":"Box Shadow Block","category":"text","icon":"flag","description":"A Gutenberg block to show your pride! This block enables you to type text and style it with the color font Gilbert from Type with Pride.","attributes":{"horizontalOffset":{"type":"number","default":0},"verticalOffset":{"type":"number","default":0},"blur":{"type":"number","default":0},"spread":{"type":"number","default":0},"boxShadowColor":{"type":"string"},"customBoxShadowColor":{"type":"string"}},"supports":{"align":true,"color":{"link":true,"__experimentalDefaultControls":{"background":true,"text":true}},"typography":{"fontSize":true,"lineHeight":true,"__experimentalFontFamily":true,"__experimentalFontStyle":true,"__experimentalFontWeight":true,"__experimentalLetterSpacing":true,"__experimentalTextTransform":true,"__experimentalDefaultControls":{"fontSize":true,"fontAppearance":true}},"__experimentalBorder":{"color":true,"radius":true,"style":true,"width":true},"spacing":{"padding":true,"margin":true}},"textdomain":"box-shadow-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

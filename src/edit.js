@@ -7,6 +7,7 @@ import { compose } from '@wordpress/compose';
 import {
 	PanelBody,
 	RangeControl,
+	__experimentalUnitControl as UnitControl,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
@@ -123,14 +124,65 @@ function Edit( {
 				/>
 
 				<ToolsPanel label={ __( 'Box Shadow' ) }>
+
 					<ToolsPanelItem
 						hasValue={ () => {
-							return spread === undefined ? false : true;
+							return horizontalOffset === 0 ? false : true;
+						} }
+						label={ __( 'Horizontal Offset' ) }
+						onDeselect={ () => setAttributes( { horizontalOffset: 0 } ) }
+						resetAllFilter={ () => ( { horizontalOffset: 0 } ) }
+					>
+						<RangeControl
+							label={ __( 'Horizontal Offset' ) }
+							value={ horizontalOffset }
+							onChange={ ( value ) => setAttributes( { horizontalOffset: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () => {
+							return verticalOffset === 0 ? false : true;
+						} }
+						label={ __( 'Vertical Offset' ) }
+						onDeselect={ () => setAttributes( { verticalOffset: 0 } ) }
+						resetAllFilter={ () => ( { verticalOffset: 0 } ) }
+					>
+						<RangeControl
+							label={ __( 'Vertical Offset' ) }
+							value={ verticalOffset }
+							onChange={ ( value ) => setAttributes( { verticalOffset: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () => {
+							return blur === 0 ? false : true;
+						} }
+						label={ __( 'Blur' ) }
+						onDeselect={ () => setAttributes( { blur: 0 } ) }
+						resetAllFilter={ () => ( { blur: 0 } ) }
+					>
+						<RangeControl
+							label={ __( 'Blur' ) }
+							value={ blur }
+							onChange={ ( value ) => setAttributes( { blur: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+					</ToolsPanelItem>
+
+					<ToolsPanelItem
+						hasValue={ () => {
+							return spread === 0 ? false : true;
 						} }
 						label={ __( 'Spread' ) }
 						onDeselect={ () => setAttributes( { spread: 0 } ) }
 						resetAllFilter={ () => ( { spread: 0 } ) }
-						isShownByDefault
 					>
 						<RangeControl
 							label={ __( 'Spread' ) }
@@ -138,7 +190,6 @@ function Edit( {
 							onChange={ ( value ) => setAttributes( { spread: value } ) }
 							min={ 0 }
 							max={ 100 }
-							required
 						/>
 					</ToolsPanelItem>
 
@@ -150,7 +201,7 @@ function Edit( {
 								colorValue: boxShadowColor.color,
 								label: __( 'Color' ),
 								onColorChange: setBoxShadowColor,
-								isShownByDefault: true,
+								isShownByDefault: false,
 								resetAllFilter: () => ( {
 									boxShadowColor: undefined,
 									customBoxShadowColor: undefined,
@@ -183,26 +234,6 @@ function Edit( {
 					panelId={ clientId }
 					{ ...colorGradientSettings }
 				/>
-
-				<ToolsPanelItem
-					hasValue={ () => {
-						return spread === undefined ? false : true;
-					} }
-					label={ __( 'Spread' ) }
-					onDeselect={ () => setAttributes( { spread: 0 } ) }
-					resetAllFilter={ () => ( { spread: 0 } ) }
-					isShownByDefault
-					panelId={ clientId }
-				>
-					<RangeControl
-						label={ __( 'Spread' ) }
-						value={ spread }
-						onChange={ ( value ) => setAttributes( { spread: value } ) }
-						min={ 0 }
-						max={ 100 }
-						required
-					/>
-				</ToolsPanelItem>
 			</InspectorControls>
 
 			<div { ...innerBlocksProps } />
