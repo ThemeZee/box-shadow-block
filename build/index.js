@@ -201,23 +201,7 @@ function Edit(_ref) {
         customBoxShadowColor: undefined
       })
     }]
-  }, colorGradientSettings)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InspectorControls, {
-    __experimentalGroup: "color"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.__experimentalColorGradientSettingsDropdown, (0,_babel_runtime_helpers_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
-    __experimentalHasMultipleOrigins: true,
-    __experimentalIsRenderedInSidebar: true,
-    settings: [{
-      colorValue: boxShadowColor.color,
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Box shadow'),
-      onColorChange: setBoxShadowColor,
-      isShownByDefault: true,
-      resetAllFilter: () => ({
-        boxShadowColor: undefined,
-        customBoxShadowColor: undefined
-      })
-    }],
-    panelId: clientId
-  }, colorGradientSettings))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps));
+  }, colorGradientSettings)))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", innerBlocksProps));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_compose__WEBPACK_IMPORTED_MODULE_3__.compose)([(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.withColors)('boxShadowColor')])(Edit));

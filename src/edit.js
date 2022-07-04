@@ -203,27 +203,6 @@ function Edit( {
 
 			</InspectorControls>
 
-			<InspectorControls __experimentalGroup="color">
-				<ColorGradientSettingsDropdown
-					__experimentalHasMultipleOrigins
-					__experimentalIsRenderedInSidebar
-					settings={ [
-						{
-							colorValue: boxShadowColor.color,
-							label: __( 'Box shadow' ),
-							onColorChange: setBoxShadowColor,
-							isShownByDefault: true,
-							resetAllFilter: () => ( {
-								boxShadowColor: undefined,
-								customBoxShadowColor: undefined,
-							} ),
-						},
-					] }
-					panelId={ clientId }
-					{ ...colorGradientSettings }
-				/>
-			</InspectorControls>
-
 			<div { ...innerBlocksProps } />
 		</>
 	);
