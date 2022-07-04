@@ -71,46 +71,6 @@ function Edit( {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Box shadow settings' ) }>
-
-					<RangeControl
-						label={ __( 'Horizontal offset' ) }
-						value={ horizontalOffset }
-						onChange={ ( value ) => setAttributes( { horizontalOffset: value } ) }
-						min={ -100 }
-						max={ 100 }
-						required
-					/>
-
-					<RangeControl
-						label={ __( 'Vertical offset' ) }
-						value={ verticalOffset }
-						onChange={ ( value ) => setAttributes( { verticalOffset: value } ) }
-						min={ -100 }
-						max={ 100 }
-						required
-					/>
-
-					<RangeControl
-						label={ __( 'Blur' ) }
-						value={ blur }
-						onChange={ ( value ) => setAttributes( { blur: value } ) }
-						min={ 0 }
-						max={ 100 }
-						required
-					/>
-
-					<RangeControl
-						label={ __( 'Spread' ) }
-						value={ spread }
-						onChange={ ( value ) => setAttributes( { spread: value } ) }
-						min={ 0 }
-						max={ 100 }
-						required
-					/>
-
-				</PanelBody>
-
 				<ToolsPanel label={ __( 'Box Shadow' ) }>
 
 					<ToolsPanelItem
