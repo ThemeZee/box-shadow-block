@@ -61,7 +61,7 @@ function Edit(_ref) {
     spread
   } = attributes; // Convert numbers into a string with pixel values (e.g. 5px 5px 10px 0px).
 
-  const shadowPixelValues = [horizontalOffset, verticalOffset, blur, spread].map(x => x + "px").join(' '); // Set custom color if added by user. Otherwise use text color as default.
+  const shadowPixelValues = [horizontalOffset, verticalOffset + "px", blur + "px", spread + "px"].join(' '); // Set custom color if added by user. Otherwise use text color as default.
 
   const shadowColor = boxShadowColor.color ? boxShadowColor.color : "currentColor";
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.useBlockProps)({
@@ -72,27 +72,38 @@ function Edit(_ref) {
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.useInnerBlocksProps)({ ...blockProps
   });
   const colorGradientSettings = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.__experimentalUseMultipleOriginColorsAndGradients)();
+  const availableUnitSettings = ((0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.useSetting)('spacing.units') || undefined)?.filter(availableUnit => availableUnit !== '%');
+  const units = (0,_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalUseCustomUnits)({
+    availableUnits: availableUnitSettings || ['px', 'em', 'rem', 'vw', 'vh'],
+    defaultValues: {
+      px: 5,
+      em: 0.3,
+      rem: 0.3,
+      vw: 0.3,
+      vh: 0.5
+    }
+  });
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanel, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Box Shadow')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
     hasValue: () => {
-      return horizontalOffset === 0 ? false : true;
+      return horizontalOffset === "5px" ? false : true;
     },
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Horizontal Offset'),
     onDeselect: () => setAttributes({
-      horizontalOffset: 0
+      horizontalOffset: "5px"
     }),
     resetAllFilter: () => ({
-      horizontalOffset: 0
+      horizontalOffset: "5px"
     })
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RangeControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalUnitControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_2__.__)('Horizontal Offset'),
+    isResetValueOnUnitChange: true,
     value: horizontalOffset,
+    units: units,
     onChange: value => setAttributes({
       horizontalOffset: value
-    }),
-    min: -100,
-    max: 100
+    })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
     hasValue: () => {
       return verticalOffset === 0 ? false : true;
@@ -285,7 +296,7 @@ function save(_ref) {
     customBoxShadowColor
   } = attributes; // Convert numbers into a string with pixel values (e.g. 5px 5px 10px 0px).
 
-  const shadowPixelValues = [horizontalOffset, verticalOffset, blur, spread].map(x => x + "px").join(' '); // Set custom color if added by user. Otherwise use text color as default.
+  const shadowPixelValues = [horizontalOffset, verticalOffset + "px", blur + "px", spread + "px"].join(' '); // Set custom color if added by user. Otherwise use text color as default.
 
   let shadowColor;
 
@@ -427,7 +438,7 @@ function _extends() {
   \************************/
 /***/ ((module) => {
 
-module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"themezee/box-shadow-block","version":"0.1.0","title":"Box Shadow Block","category":"text","icon":"flag","description":"A Gutenberg block to show your pride! This block enables you to type text and style it with the color font Gilbert from Type with Pride.","attributes":{"horizontalOffset":{"type":"number","default":0},"verticalOffset":{"type":"number","default":0},"blur":{"type":"number","default":0},"spread":{"type":"number","default":0},"boxShadowColor":{"type":"string"},"customBoxShadowColor":{"type":"string"}},"supports":{"align":true,"color":{"link":true,"__experimentalDefaultControls":{"background":true,"text":true}},"typography":{"fontSize":true,"lineHeight":true,"__experimentalFontFamily":true,"__experimentalFontStyle":true,"__experimentalFontWeight":true,"__experimentalLetterSpacing":true,"__experimentalTextTransform":true,"__experimentalDefaultControls":{"fontSize":true,"fontAppearance":true}},"__experimentalBorder":{"color":true,"radius":true,"style":true,"width":true},"spacing":{"padding":true,"margin":true}},"textdomain":"box-shadow-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
+module.exports = JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":2,"name":"themezee/box-shadow-block","version":"0.1.0","title":"Box Shadow Block","category":"text","icon":"flag","description":"A Gutenberg block to show your pride! This block enables you to type text and style it with the color font Gilbert from Type with Pride.","attributes":{"horizontalOffset":{"type":"string","default":"5px"},"verticalOffset":{"type":"number","default":0},"blur":{"type":"number","default":0},"spread":{"type":"number","default":0},"boxShadowColor":{"type":"string"},"customBoxShadowColor":{"type":"string"}},"supports":{"align":true,"color":{"link":true,"__experimentalDefaultControls":{"background":true,"text":true}},"typography":{"fontSize":true,"lineHeight":true,"__experimentalFontFamily":true,"__experimentalFontStyle":true,"__experimentalFontWeight":true,"__experimentalLetterSpacing":true,"__experimentalTextTransform":true,"__experimentalDefaultControls":{"fontSize":true,"fontAppearance":true}},"__experimentalBorder":{"color":true,"radius":true,"style":true,"width":true},"spacing":{"padding":true,"margin":true}},"textdomain":"box-shadow-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 

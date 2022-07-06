@@ -8,6 +8,7 @@ import {
 	PanelBody,
 	RangeControl,
 	__experimentalUnitControl as UnitControl,
+	__experimentalUseCustomUnits as useCustomUnits,
 	__experimentalToolsPanel as ToolsPanel,
 	__experimentalToolsPanelItem as ToolsPanelItem,
 } from '@wordpress/components';
@@ -16,6 +17,7 @@ import {
 	InspectorControls,
 	useBlockProps,
 	useInnerBlocksProps,
+	useSetting,
 	PanelColorSettings,
 	__experimentalColorGradientSettingsDropdown as ColorGradientSettingsDropdown,
 	__experimentalUseMultipleOriginColorsAndGradients as useMultipleOriginColorsAndGradients,
@@ -51,10 +53,10 @@ function Edit( {
 	// Convert numbers into a string with pixel values (e.g. 5px 5px 10px 0px).
 	const shadowPixelValues = [
 		horizontalOffset,
-		verticalOffset,
-		blur,
-		spread,
-	].map(x => x + "px").join(' ');
+		verticalOffset + "px",
+		blur + "px",
+		spread + "px",
+	].join(' ');
 
 	// Set custom color if added by user. Otherwise use text color as default.
 	const shadowColor = boxShadowColor.color ? boxShadowColor.color : "currentColor";
@@ -68,6 +70,21 @@ function Edit( {
 	const innerBlocksProps = useInnerBlocksProps( { ...blockProps } );
 	const colorGradientSettings = useMultipleOriginColorsAndGradients();
 
+	const availableUnitSettings = (
+		useSetting( 'spacing.units' ) || undefined
+	)?.filter( ( availableUnit ) => availableUnit !== '%' );
+
+	const units = useCustomUnits( {
+		availableUnits: availableUnitSettings || [
+			'px',
+			'em',
+			'rem',
+			'vw',
+			'vh',
+		],
+		defaultValues: { px: 5, em: 0.3, rem: 0.3, vw: 0.3, vh: 0.5 },
+	} );
+
 	return (
 		<>
 			<InspectorControls>
@@ -75,18 +92,18 @@ function Edit( {
 
 					<ToolsPanelItem
 						hasValue={ () => {
-							return horizontalOffset === 0 ? false : true;
+							return horizontalOffset === "5px" ? false : true;
 						} }
 						label={ __( 'Horizontal Offset' ) }
-						onDeselect={ () => setAttributes( { horizontalOffset: 0 } ) }
-						resetAllFilter={ () => ( { horizontalOffset: 0 } ) }
+						onDeselect={ () => setAttributes( { horizontalOffset: "5px" } ) }
+						resetAllFilter={ () => ( { horizontalOffset: "5px" } ) }
 					>
-						<RangeControl
+						<UnitControl
 							label={ __( 'Horizontal Offset' ) }
+							isResetValueOnUnitChange
 							value={ horizontalOffset }
+							units={ units }
 							onChange={ ( value ) => setAttributes( { horizontalOffset: value } ) }
-							min={ -100 }
-							max={ 100 }
 						/>
 					</ToolsPanelItem>
 

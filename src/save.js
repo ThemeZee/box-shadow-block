@@ -33,10 +33,10 @@ export default function save( { attributes } ) {
 	// Convert numbers into a string with pixel values (e.g. 5px 5px 10px 0px).
 	const shadowPixelValues = [
 		horizontalOffset,
-		verticalOffset,
-		blur,
-		spread,
-	].map(x => x + "px").join(' ');
+		verticalOffset + "px",
+		blur + "px",
+		spread + "px",
+	].join(' ');
 
 	// Set custom color if added by user. Otherwise use text color as default.
 	let shadowColor;
