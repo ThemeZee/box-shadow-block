@@ -91,7 +91,7 @@ function Edit(_ref) {
     onChange: value => setAttributes({
       horizontalOffset: value
     }),
-    min: 0,
+    min: -100,
     max: 100
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
     hasValue: () => {
@@ -110,7 +110,7 @@ function Edit(_ref) {
     onChange: value => setAttributes({
       verticalOffset: value
     }),
-    min: 0,
+    min: -100,
     max: 100
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.__experimentalToolsPanelItem, {
     hasValue: () => {

@@ -85,7 +85,7 @@ function Edit( {
 							label={ __( 'Horizontal Offset' ) }
 							value={ horizontalOffset }
 							onChange={ ( value ) => setAttributes( { horizontalOffset: value } ) }
-							min={ 0 }
+							min={ -100 }
 							max={ 100 }
 						/>
 					</ToolsPanelItem>
@@ -102,7 +102,7 @@ function Edit( {
 							label={ __( 'Vertical Offset' ) }
 							value={ verticalOffset }
 							onChange={ ( value ) => setAttributes( { verticalOffset: value } ) }
-							min={ 0 }
+							min={ -100 }
 							max={ 100 }
 						/>
 					</ToolsPanelItem>
